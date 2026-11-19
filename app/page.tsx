@@ -3,7 +3,7 @@ import { Credentials } from "@/components/credentials";
 import { Experience } from "@/components/experience";
 import { FilterProvider } from "@/components/filter-context";
 import { Hero } from "@/components/hero";
-import { OpenSource } from "@/components/open-source";
+import { Projects } from "@/components/projects";
 import { Strengths } from "@/components/strengths";
 import { Toolbox } from "@/components/toolbox";
 import { Work } from "@/components/work";
@@ -16,7 +16,7 @@ export default function Home() {
       <Work />
       <Experience />
       <Toolbox />
-      <OpenSource />
+      <Projects />
       <Credentials />
       <Contact />
     </FilterProvider>

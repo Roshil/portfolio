@@ -13,7 +13,7 @@ export const site = {
     "ML Engineer Associate at Fusemachines since 2023. I build end to end: graph neural networks that explain their predictions, real-time detection and tracking, demand forecasting services and LLM agents that remember.",
   // Months used for the "years in ML" figure in the hero.
   careerStart: "2023-08-01",
-  email: "roshil.bana@fusemachines.com",
+  email: "roshilstha32@gmail.com",
   github: "https://github.com/Roshil",
   linkedin: "https://www.linkedin.com/in/roshil-shrestha-914841177/",
   cvPath: "/Roshil_Shrestha_CV.pdf",
@@ -33,7 +33,7 @@ export const nav = [
   { id: "work", label: "Work" },
   { id: "experience", label: "Experience" },
   { id: "toolbox", label: "Toolbox" },
-  { id: "open-source", label: "Open source" },
+  { id: "projects", label: "Projects" },
   { id: "credentials", label: "Credentials" },
   { id: "contact", label: "Contact" },
 ] as const;

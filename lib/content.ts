@@ -1,3 +1,5 @@
+import type { DomainId } from "./domains";
+
 // The rest of the CV: roles, education, skills and credentials.
 
 export const about = [
@@ -160,21 +162,48 @@ export const strengths: { title: string; line: string; project: string }[] = [
   },
 ];
 
-// The Open source list comes from lib/github-repos.json (refresh it with
-// npm run fetch-repos). These optional notes, keyed by full repo name,
-// replace GitHub's short description and add tags or a case-study link.
-export const repoNotes: Record<string, { description?: string; stack?: string[]; project?: string }> = {
+// The Projects section lists the repos in lib/github-repos.json (refresh it
+// with npm run fetch-repos). These optional notes, keyed by full repo name,
+// add a drawing, a caption, a category and a better description. Repos
+// without notes still appear, with GitHub's description and a generic drawing.
+export type RepoNote = {
+  rank?: number; // lower comes first; repos without one follow, newest first
+  figure?: "memory" | "movie" | "book";
+  color?: DomainId | "accent";
+  caption?: { title: string; sub: string };
+  category?: string;
+  description?: string;
+  stack?: string[];
+  project?: string; // slug of a related case study
+};
+
+export const repoNotes: Record<string, RepoNote> = {
   "roshil04/agentic_memory_service": {
-    description: "Persistent, queryable session memory for Google ADK agents, backed by PostgreSQL. The code behind the agent memory proof of concept.",
+    rank: 1,
+    figure: "memory",
+    color: "agents",
+    caption: { title: "Cross-session memory", sub: "Agents recall past sessions" },
+    category: "LLM agents",
+    description: "Persistent, queryable session memory for Google ADK agents, backed by PostgreSQL.",
     stack: ["Python", "Google ADK", "PostgreSQL"],
     project: "agent-memory",
   },
+  "Roshil/movie-recommender-system": {
+    rank: 2,
+    figure: "movie",
+    color: "nlp",
+    caption: { title: "Content-based similarity", sub: "Plus review sentiment" },
+    category: "Recommender systems",
+    description: "Suggests films similar to one you like and analyses the sentiment of your reviews, in Streamlit.",
+    stack: ["Python", "Streamlit", "Sentiment analysis"],
+  },
   "Roshil/book-recommender-system": {
+    rank: 3,
+    figure: "book",
+    color: "vision",
+    caption: { title: "Hybrid filtering", sub: "Content-based and collaborative" },
+    category: "Recommender systems",
     description: "Book recommendations from a hybrid of content-based and collaborative filtering, served as a Flask web app.",
     stack: ["Python", "Flask", "Collaborative filtering"],
-  },
-  "Roshil/movie-recommender-system": {
-    description: "A content-based recommender that suggests films similar to one you like and analyses the sentiment of your reviews, in Streamlit.",
-    stack: ["Python", "Streamlit", "Sentiment analysis"],
   },
 };

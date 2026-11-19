@@ -9,7 +9,7 @@ import { readFile, writeFile } from "node:fs/promises";
 
 const USERS = ["Roshil"]; // every public, non-fork repo of these accounts
 const EXTRA = ["roshil04/agentic_memory_service"]; // single repos from elsewhere
-const HIDE = []; // full names to leave off the site, e.g. "Roshil/some-repo"
+const HIDE = ["Roshil/portfolio"]; // full names to leave off the site
 const OUT = new URL("../lib/github-repos.json", import.meta.url);
 
 const headers = { Accept: "application/vnd.github+json", "User-Agent": "roshil-portfolio" };

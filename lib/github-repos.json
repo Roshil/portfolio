@@ -2,6 +2,14 @@
   "fetchedAt": "2026-11-19",
   "repos": [
     {
+      "fullName": "Roshil/portfolio",
+      "url": "https://github.com/Roshil/portfolio",
+      "description": null,
+      "language": "TypeScript",
+      "stars": 0,
+      "pushedAt": "2026-11-19"
+    },
+    {
       "fullName": "roshil04/agentic_memory_service",
       "url": "https://github.com/roshil04/agentic_memory_service",
       "description": null,

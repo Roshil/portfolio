@@ -28,12 +28,12 @@ All content lives in `lib/`, so you rarely need to touch components.
 | Projects and case studies | `lib/projects.ts` |
 | About text, strengths, roles, education, toolbox, repos, certifications, training | `lib/content.ts` |
 | The five technique areas and their colours | `lib/domains.ts` and `app/globals.css` |
-| Open source repos (from GitHub) | `lib/github-repos.json`, refreshed by `npm run fetch-repos` |
+| Projects (open-source repos from GitHub) | `lib/github-repos.json`, refreshed by `npm run fetch-repos` |
 | Your CV (the download button) | `public/Roshil_Shrestha_CV.pdf` |
 
 **Profile photo:** the hero uses your GitHub avatar. To use a different photo, put a square image at `public/profile.jpg` and set `photo: "/profile.jpg"` in `lib/site.ts`. Set it to `null` for the "RS" monogram.
 
-**Open source repos:** the list comes from `lib/github-repos.json`. Run `npm run fetch-repos` to refresh it from GitHub after you publish a new repo, then commit the updated file. Edit `USERS`, `EXTRA` and `HIDE` at the top of `scripts/fetch-repos.mjs` to choose what appears, and add a better description or a case-study link for any repo in `repoNotes` in `lib/content.ts`. If GitHub rate-limits you, set `GITHUB_TOKEN` and run it again; a failed refresh always keeps the existing list.
+**Projects (open-source repos):** the list comes from `lib/github-repos.json`. Run `npm run fetch-repos` to refresh it from GitHub after you publish a new repo, then commit the updated file. Edit `USERS`, `EXTRA` and `HIDE` at the top of `scripts/fetch-repos.mjs` to choose what appears, and add a better description or a case-study link for any repo in `repoNotes` in `lib/content.ts`. If GitHub rate-limits you, set `GITHUB_TOKEN` and run it again; a failed refresh always keeps the existing list.
 
 **Adding a project:** add an entry to `lib/projects.ts`. Then add its position to `PROJECT_POS` in `components/work-graph.tsx`, and optionally a drawing in `components/project-motif.tsx`. Its case-study page at `/projects/<slug>` is generated automatically.
 
