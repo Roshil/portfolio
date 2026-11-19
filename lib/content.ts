@@ -3,9 +3,9 @@ import type { DomainId } from "./domains";
 // The rest of the CV: roles, education, skills and credentials.
 
 export const about = [
-  "I'm a machine learning engineer at Fusemachines with a Bachelor's in Computer Science and Information Technology. Since joining in 2023 I've delivered ML systems for clients in gaming, manufacturing, healthcare and sports, from object detection and text recognition to graph neural networks and LLM agents.",
-  "Most of my work starts with messy business data and a question someone needs answered. I like the whole path from there: designing the pipeline, engineering features, choosing and tuning the model, explaining what it learned, and getting it into production.",
-  "I care about model performance, explainability and measurable impact, and I work best in cross-functional teams where engineers, analysts and domain experts shape the solution together.",
+  "I am a Machine Learning Engineer at Fusemachines, with a Bachelor's degree in Computer Science and Information Technology. Since joining in 2023, I have worked on designing and delivering machine learning solutions across diverse industries, including gaming, manufacturing, healthcare, and sports. My experience spans computer vision, object detection, text recognition, graph neural networks, and LLM-powered intelligent agents.",
+  "I enjoy turning complex, unstructured business data into practical, intelligent solutions. From understanding business problems and designing data pipelines to feature engineering, model development, experimentation, optimization, and deployment, I work across the entire machine learning lifecycle to build systems that solve real-world challenges.",
+  "My approach goes beyond building models. I focus on performance, reliability, explainability, and measurable business impact. I also value collaborative problem-solving, working closely with engineers, data analysts, and domain experts to transform ideas into scalable, production-ready solutions.",
 ];
 
 export type Role = {
