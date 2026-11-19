@@ -1,0 +1,339 @@
+@import "tailwindcss";
+
+/* Light by default; dark when the system asks for it (unless light was
+   picked with the toggle), or when dark was picked. */
+:root {
+  --paper: #f5f4f0; /* page background */
+  --surface: #ffffff; /* tiles */
+  --sunken: #efeee8; /* posters and chips inside tiles */
+  --ink: #17181c;
+  --muted: #5f636b;
+  --line: #e3e1d9;
+  --edge: #c5c3ba;
+  --accent: #2b47c9;
+  --accent-ink: #ffffff;
+  --accent-soft: #e2e7fb;
+  --grid: rgb(23 24 28 / 0.06);
+  --net: #2b47c9; /* background network */
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 10px 30px rgb(23 24 28 / 0.05);
+  --radius: 22px;
+
+  --d-graph: #2b47c9;
+  --d-vision: #0b8466;
+  --d-agents: #a1388a;
+  --d-nlp: #a86400;
+  --d-forecast: #c23b33;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0b0c0e;
+    --surface: #141518;
+    --sunken: #1c1d21;
+    --ink: #ececec;
+    --muted: #9a9ca4;
+    --line: #26272c;
+    --edge: #3b3d45;
+    --accent: #93a6ff;
+    --accent-ink: #0c1230;
+    --accent-soft: #1b2347;
+    --grid: rgb(236 236 236 / 0.05);
+    --net: #93a6ff;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 30px rgb(0 0 0 / 0.3);
+    --d-graph: #93a6ff;
+    --d-vision: #4fc9a6;
+    --d-agents: #e48bd2;
+    --d-nlp: #efb050;
+    --d-forecast: #f2857c;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #0b0c0e;
+  --surface: #141518;
+  --sunken: #1c1d21;
+  --ink: #ececec;
+  --muted: #9a9ca4;
+  --line: #26272c;
+  --edge: #3b3d45;
+  --accent: #93a6ff;
+  --accent-ink: #0c1230;
+  --accent-soft: #1b2347;
+  --grid: rgb(236 236 236 / 0.05);
+  --net: #93a6ff;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 30px rgb(0 0 0 / 0.3);
+  --d-graph: #93a6ff;
+  --d-vision: #4fc9a6;
+  --d-agents: #e48bd2;
+  --d-nlp: #efb050;
+  --d-forecast: #f2857c;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+
+  --font-display: "Newsreader Variable", "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "Hanken Grotesk Variable", "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+  --text-lead: 1.08rem;
+  --text-lead--line-height: 1.6;
+  --text-h3: 1.45rem;
+  --text-h3--line-height: 1.15;
+  --text-h2: clamp(2rem, 1.5rem + 1.8vw, 2.75rem);
+  --text-h2--line-height: 1.1;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@layer components {
+  /* Page width: 1120px of content with comfortable side padding. */
+  .wrap {
+    width: 100%;
+    max-width: 1184px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 640px) {
+    .wrap {
+      padding-inline: 32px;
+    }
+  }
+
+  /* A section: its own vertical rhythm, and room for the sticky header. */
+  .section {
+    padding-block: 56px;
+  }
+  @media (min-width: 768px) {
+    .section {
+      padding-block: 72px;
+    }
+  }
+
+  /* The rounded card everything sits in. */
+  .tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+  .tile:target {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+
+  /* A small grey caption above a tile's title. */
+  .tile-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* Bento grid: one column on phones, two on tablets, three on desktop. */
+  .bento {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 720px) {
+    .bento {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .bento > .span-2,
+    .bento > .span-3 {
+      grid-column: 1 / -1;
+    }
+  }
+  @media (min-width: 1024px) {
+    .bento {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .bento > .span-2 {
+      grid-column: span 2;
+    }
+    .bento > .span-3 {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* Pill buttons. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+  .btn:hover {
+    background: var(--sunken);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+  .btn-primary:hover {
+    background: color-mix(in srgb, var(--accent) 88%, black);
+  }
+  .btn-small {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+  }
+
+  /* Tags: technologies and similar. */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--sunken);
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .text-link {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+  }
+  .text-link:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .link-btn {
+    align-self: flex-start;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .link-btn:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  /* Bullets drawn as small hollow nodes. */
+  .node-list > li {
+    position: relative;
+    padding-left: 1.3rem;
+  }
+  .node-list > li::before {
+    content: "";
+    position: absolute;
+    left: 0.1rem;
+    top: 0.6em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--bullet, var(--accent));
+  }
+}
+
+/* Graph-paper texture used behind figures. */
+.graph-paper {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* The drifting network behind the page: full strength in the side margins,
+   faint behind the content. */
+.net-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: 0.22;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    90deg,
+    #000 calc(50% - 660px),
+    rgb(0 0 0 / 0.18) calc(50% - 520px),
+    rgb(0 0 0 / 0.18) calc(50% + 520px),
+    #000 calc(50% + 660px)
+  );
+}
+@media (max-width: 1100px) {
+  .net-bg {
+    opacity: 0.1;
+  }
+}
