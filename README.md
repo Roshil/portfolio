@@ -29,7 +29,7 @@ All content lives in `lib/`, so you rarely need to touch components.
 | About text, strengths, roles, education, toolbox, repos, certifications, training | `lib/content.ts` |
 | The five technique areas and their colours | `lib/domains.ts` and `app/globals.css` |
 | Projects (open-source repos from GitHub) | `lib/github-repos.json`, refreshed by `npm run fetch-repos` |
-| Your CV (the download button) | `public/Roshil_Shrestha_CV.pdf` |
+| Your resume (the Resume buttons, which open it in a new tab) | `public/Roshil_Shrestha_CV.pdf` |
 
 **Profile photo:** the hero uses your GitHub avatar. To use a different photo, put a square image at `public/profile.jpg` and set `photo: "/profile.jpg"` in `lib/site.ts`. Set it to `null` for the "RS" monogram.
 
@@ -37,7 +37,7 @@ All content lives in `lib/`, so you rarely need to touch components.
 
 **Adding a project:** add an entry to `lib/projects.ts`. Then add its position to `PROJECT_POS` in `components/work-graph.tsx`, and optionally a drawing in `components/project-motif.tsx`. Its case-study page at `/projects/<slug>` is generated automatically.
 
-**Updating the CV:** replace the PDF in `public/`, keeping the same file name, or change `cvPath` in `lib/site.ts`.
+**Updating the resume:** replace the PDF in `public/`, keeping the same file name, or change `cvPath` in `lib/site.ts`.
 
 ## Contact form
 

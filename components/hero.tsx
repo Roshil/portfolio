@@ -1,4 +1,4 @@
-import { Download, Mail } from "lucide-react";
+import { FileText, Mail } from "lucide-react";
 import { about } from "@/lib/content";
 import { projects } from "@/lib/projects";
 import { site } from "@/lib/site";
@@ -49,8 +49,8 @@ export function Hero() {
               <a href={`mailto:${site.email}`} className="btn btn-primary">
                 <Mail size={16} aria-hidden="true" /> Email me
               </a>
-              <a href={site.cvPath} download className="btn">
-                <Download size={16} aria-hidden="true" /> CV (PDF)
+              <a href={site.cvPath} target="_blank" rel="noopener noreferrer" className="btn">
+                <FileText size={16} aria-hidden="true" /> Resume
               </a>
               <a href="#work" className="btn">
                 See my work

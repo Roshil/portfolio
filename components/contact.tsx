@@ -2,7 +2,7 @@ import { site, sectionLabel } from "@/lib/site";
 import { ContactForm } from "./contact-form";
 import { CopyEmail } from "./copy-email";
 import { GitHubIcon, LinkedInIcon } from "./icons";
-import { Download } from "lucide-react";
+import { FileText } from "lucide-react";
 
 export function Contact() {
   return (
@@ -35,8 +35,8 @@ export function Contact() {
                 </a>
               </li>
               <li>
-                <a href={site.cvPath} download className="btn">
-                  <Download size={15} aria-hidden="true" /> CV (PDF)
+                <a href={site.cvPath} target="_blank" rel="noopener noreferrer" className="btn">
+                  <FileText size={15} aria-hidden="true" /> Resume
                 </a>
               </li>
             </ul>

@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Download, Menu, X } from "lucide-react";
+import { FileText, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -139,8 +139,8 @@ export function SiteHeader() {
                   </li>
                 ))}
                 <li className="mt-1 border-t border-line pt-2">
-                  <a href={site.cvPath} download className="flex min-h-11 items-center gap-2 rounded-xl px-3.5 text-accent hover:bg-sunken">
-                    <Download size={16} aria-hidden="true" /> Download CV
+                  <a href={site.cvPath} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center gap-2 rounded-xl px-3.5 text-accent hover:bg-sunken">
+                    <FileText size={16} aria-hidden="true" /> Resume
                   </a>
                 </li>
               </ul>
