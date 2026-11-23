@@ -29,7 +29,7 @@ export function Projects() {
           Open-source projects on GitHub, code included. My client work stays private, so its write-ups are under Work.
         </SectionHead>
 
-        <div className={`grid gap-4 sm:grid-cols-2 ${repos.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}></div>
+        <div className={`grid gap-4 sm:grid-cols-2 ${repos.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
           {repos.map((r) => {
             const [owner, name] = r.fullName.split("/");
             const n = r.note;
