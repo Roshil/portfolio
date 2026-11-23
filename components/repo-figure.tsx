@@ -88,6 +88,42 @@ function Book({ c }: { c: string }) {
   );
 }
 
+function Analytics({ c }: { c: string }) {
+  // A question becomes SQL, passes the validator and reviewer, and comes back as a checked answer.
+  return (
+    <>
+      {/* Question */}
+      <rect x={18} y={26} width={104} height={40} rx={12} fill={S} stroke={M} strokeWidth={1.75} />
+      <path d="M34 66 L30 78 L46 66" fill={S} stroke={M} strokeWidth={1.75} strokeLinejoin="round" />
+      <rect x={30} y={38} width={70} height={6} rx={3} fill={M} opacity={0.6} />
+      <rect x={30} y={50} width={48} height={6} rx={3} fill={M} opacity={0.6} />
+      {/* SQL */}
+      <rect x={18} y={96} width={104} height={76} rx={8} fill="var(--sunken)" stroke={L} strokeWidth={1.5} />
+      <rect x={28} y={108} width={36} height={6} rx={3} fill={c} />
+      <rect x={68} y={108} width={42} height={6} rx={3} fill={L} />
+      <rect x={28} y={122} width={22} height={6} rx={3} fill={c} />
+      <rect x={54} y={122} width={56} height={6} rx={3} fill={L} />
+      <rect x={28} y={136} width={30} height={6} rx={3} fill={c} />
+      <rect x={62} y={136} width={40} height={6} rx={3} fill={L} />
+      <rect x={28} y={150} width={50} height={6} rx={3} fill={L} />
+      {/* Validator and reviewer gate */}
+      <path d="M128 134 H160" stroke={c} strokeWidth={2} strokeDasharray="4 4" />
+      <path d="M176 112 L196 120 V138 C196 150 186 158 176 162 C166 158 156 150 156 138 V120 Z" fill={S} stroke={c} strokeWidth={2} strokeLinejoin="round" />
+      <path d="M168 136 L174 142 L185 129" fill="none" stroke={c} strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M200 134 H222" stroke={c} strokeWidth={2} strokeDasharray="4 4" />
+      {/* Verified answer */}
+      <rect x={226} y={60} width={78} height={112} rx={10} fill={S} stroke={M} strokeWidth={1.75} />
+      {[0.5, 0.8, 0.62, 0.95].map((h, i) => (
+        <rect key={i} x={238 + i * 15} y={150 - h * 60} width={10} height={h * 60} rx={2} fill={c} opacity={0.35 + i * 0.18} />
+      ))}
+      <line x1={234} y1={151} x2={296} y2={151} stroke={L} strokeWidth={1.5} />
+      <circle cx={292} cy={72} r={8} fill={c} />
+      <path d="M288 72 L291 75 L296 69" fill="none" stroke={S} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M150 52 C190 30 230 34 262 56" fill="none" stroke={L} strokeWidth={1.5} strokeDasharray="3 4" />
+    </>
+  );
+}
+
 function Generic({ c }: { c: string }) {
   return (
     <>
@@ -108,7 +144,7 @@ export function RepoFigure({ figure, color, className }: { figure?: RepoNote["fi
     // Same drawing as the agent memory case study.
     return <ProjectMotif project={projectBySlug("agent-memory")!} className={className} />;
   }
-  const Drawing = figure === "movie" ? Movie : figure === "book" ? Book : Generic;
+  const Drawing = figure === "analytics" ? Analytics : figure === "movie" ? Movie : figure === "book" ? Book : Generic;
   return (
     <svg viewBox="0 0 320 200" className={className} aria-hidden="true" focusable="false">
       <Drawing c={color} />

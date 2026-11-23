@@ -96,7 +96,7 @@ export const skills: { group: string; items: string[]; wide?: boolean }[] = [
   },
   {
     group: "LLMs & agents",
-    items: ["Google ADK", "LangChain", "CrewAI", "Gemini", "OpenAI", "RAG", "CopilotKit", "Prompt engineering", "Multimodal image generation"],
+    items: ["Google ADK", "LangGraph", "LangChain", "CrewAI", "Gemini", "OpenAI", "RAG", "Langfuse", "CopilotKit", "Prompt engineering", "Multimodal image generation"],
   },
   { group: "Forecasting", items: ["MLForecast", "Hierarchical forecasting", "Time-series feature engineering"] },
   { group: "Data", items: ["Google BigQuery", "PostgreSQL", "MySQL", "MongoDB"] },
@@ -168,7 +168,7 @@ export const strengths: { title: string; line: string; project: string }[] = [
 // without notes still appear, with GitHub's description and a generic drawing.
 export type RepoNote = {
   rank?: number; // lower comes first; repos without one follow, newest first
-  figure?: "memory" | "movie" | "book";
+  figure?: "analytics" | "memory" | "movie" | "book";
   color?: DomainId | "accent";
   caption?: { title: string; sub: string };
   category?: string;
@@ -205,5 +205,15 @@ export const repoNotes: Record<string, RepoNote> = {
     category: "Recommender systems",
     description: "Book recommendations from a hybrid of content-based and collaborative filtering, served as a Flask web app.",
     stack: ["Python", "Flask", "Collaborative filtering"],
+  },
+  "Roshil/Conversational-analytics-agent": {
+    rank: 0,
+    figure: "analytics",
+    color: "agents",
+    caption: { title: "Questions to verified SQL", sub: "Validated, reviewed, read-only" },
+    category: "LLM agents",
+    description:
+      "Ask business questions in plain English and get answers from BigQuery. Gemini drafts the SQL in a LangGraph pipeline; deterministic checks validate it and verify every answer.",
+    stack: ["Python", "LangGraph", "Google ADK", "Gemini", "BigQuery", "Langfuse"],
   },
 };
